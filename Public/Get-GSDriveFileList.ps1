@@ -69,7 +69,7 @@ try
         [int]$i = $i + $result.files.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     return $response    
     }
 catch

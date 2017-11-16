@@ -95,7 +95,7 @@ try
         [int]$i = $i + $result.groups.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     }
 catch
     {

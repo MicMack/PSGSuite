@@ -62,7 +62,7 @@ try
         [int]$i = $i + $result.teamDrives.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     return $response    
     }
 catch

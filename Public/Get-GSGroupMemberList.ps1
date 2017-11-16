@@ -76,7 +76,7 @@ try
         [int]$i = $i + $result.members.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     }
 catch
     {

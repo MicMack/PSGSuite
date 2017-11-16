@@ -75,6 +75,7 @@ catch
     $response = $reader.ReadToEnd() | 
         ConvertFrom-Json | 
         Select-Object @{N="WebError";E={$Error[0]}},@{N="Code";E={"401"}},@{N="Error";E={$_.error}},@{N="Description";E={$_.error_description}}
-    throw "$($MyInvocation.MyCommand) : $(Get-HTTPStatus -Code $response.Code): $($response.Error) / $($response.Description)"
+    Write-Error "$($MyInvocation.MyCommand) : $(Get-HTTPStatus -Code $response.Code): $($response.Error) / $($response.Description)"
+    return
     }
 }

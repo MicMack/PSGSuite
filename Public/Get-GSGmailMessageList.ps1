@@ -74,7 +74,7 @@ try
         [int]$i = $i + $result.messages.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     }
 catch
     {

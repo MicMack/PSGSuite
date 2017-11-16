@@ -57,7 +57,7 @@ try
         [int]$i = $i + $result.items.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     }
 catch
     {

@@ -104,7 +104,7 @@ try
         [int]$i = $i + $result.users.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     }
 catch
     {

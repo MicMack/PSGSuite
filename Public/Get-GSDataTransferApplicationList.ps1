@@ -65,7 +65,7 @@ try
         [int]$i = $i + $result.applications.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     }
 catch
     {

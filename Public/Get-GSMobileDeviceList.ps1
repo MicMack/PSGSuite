@@ -93,7 +93,7 @@ try
         [int]$i = $i + $result.mobiledevices.Count
         }
     until 
-        ($returnSize -lt $PageSize)
+        ([string]::IsNullOrWhiteSpace($pageToken))
     }
 catch
     {
