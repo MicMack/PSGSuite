@@ -45,6 +45,9 @@ function Update-GSUser {
       [String]
       $IPWhitelisted,
       [parameter(Mandatory=$false)]
+      [Hashtable]
+      $CustomSchemas,
+      [parameter(Mandatory=$false)]
       [String]
       $AccessToken,
       [parameter(Mandatory=$false)]
@@ -83,8 +86,9 @@ if($ChangePasswordAtNextLogin -eq $true -or $ChangePasswordAtNextLogin -eq $fals
 if($Suspended -eq $true -or $Suspended -eq $false){$body.Add("suspended",$Suspended)}
 if($IncludeInGlobalAddressList -eq $true -or $IncludeInGlobalAddressList -eq $false){$body.Add("includeInGlobalAddressList",$IncludeInGlobalAddressList)}
 if($IPWhitelisted -eq $true -or $IPWhitelisted -eq $false){$body.Add("ipWhitelisted",$IPWhitelisted)}
+if($CustomSchemas){$body.Add("customSchemas",$CustomSchemas)}
 
-$body = $body | ConvertTo-Json
+$body = $body | ConvertTo-Json -Depth 10
 $URI = "https://www.googleapis.com/admin/directory/v1/users/$User"
 try
     {
